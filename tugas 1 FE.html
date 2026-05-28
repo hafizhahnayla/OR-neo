@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Notes</title>
+
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffeef2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      transition: 0.3s;
+    }
+
+    .box {
+      background-color: white;
+      width: 380px;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #ff69b4;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: gray;
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 85%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      resize: none;
+      margin-top: 15px;
+      font-family: Arial;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #ffb6c1;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    ul {
+      margin-top: 20px;
+      text-align: left;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      background-color: #fff0f5;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+
+    <h1>Cute Notes 🌷</h1>
+
+    <p>
+      Ayo tulis catatan penting kamu disini!
+    </p>
+
+    <!-- INPUT NOTES -->
+    <textarea
+      id="inputNote"
+      rows="4"
+      placeholder="Tulis notes di sini...">
+    </textarea>
+
+    <br>
+
+    <!-- FITUR 1 -->
+    <button onclick="tambahNote()">
+      Tambah Notes
+    </button>
+
+    <!-- FITUR 2 -->
+    <button onclick="hapusSemua()">
+      Hapus Semua
+    </button>
+
+    <!-- FITUR 3 -->
+    <button onclick="gantiTema()">
+      Ganti Tema
+    </button>
+
+    <!-- DAFTAR NOTES -->
+    <ul id="listNote"></ul>
+
+    <p style="margin-top:20px;">
+      Made with HTML, CSS & JavaScript ✨
+    </p>
+
+  </div>
+
+  <script>
+
+    // FITUR 1 : tambah notes
+    function tambahNote() {
+
+      const input =
+      document.getElementById("inputNote");
+
+      if (input.value.trim() === "") {
+        return;
+      }
+
+      const li =
+      document.createElement("li");
+
+      li.innerHTML = "> " + input.value;
+
+      document.getElementById("listNote")
+      .appendChild(li);
+
+      input.value = "";
+
+    }
+
+    // FITUR 2 : hapus semua
+    function hapusSemua() {
+
+      document.getElementById("listNote")
+      .innerHTML = "";
+
+    }
+
+    // FITUR 3 : ganti tema
+    let warna = 0;
+
+    function gantiTema() {
+
+      const bg = [
+        "#ffeef2",
+        "#e0f7fa",
+        "#f3e5f5",
+        "#fff1db"
+      ];
+
+      warna++;
+
+      if (warna >= bg.length) {
+        warna = 0;
+      }
+
+      document.body.style.backgroundColor =
+      bg[warna];
+
+    }
+
+  </script>
+
+</body>
+</html>
